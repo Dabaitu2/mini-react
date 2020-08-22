@@ -1,11 +1,11 @@
-import MiniReact from './mini-react';
+import MiniReact from './mini-react-2';
 
 class MyComponent extends MiniReact.Component {
   constructor() {
     super();
     this.state = {
       a: 1,
-      b: 2
+      b: 2,
     };
   }
 
@@ -13,8 +13,18 @@ class MyComponent extends MiniReact.Component {
     return (
       <div id="a" className="b">
         <h2>hello Mini-React</h2>
-        {this.children}
+        <button
+          onclick={() => {
+            this.setState({
+              a: this.state.a + 1,
+            });
+          }}
+        >
+          add
+        </button>
         <div>{this.state.a.toString()}</div>
+        <div>{this.state.b.toString()}</div>
+        {this.children}
       </div>
     );
   }
