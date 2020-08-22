@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
     main: './main.tsx',
+    tic_tac_toe: './tic-tac-toe.tsx',
   },
   module: {
     rules: [

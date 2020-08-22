@@ -136,11 +136,23 @@ export abstract class Component {
    * 重渲染的步骤：
    * 1, 清除当前component占据的range重的内容
    * 2, 重新渲染当前range中的元素，这个时候会使用到新的state值
+   * rerender 时使用range会遇到一个问题
+   * 空的range会被周围非空的range吞并，导致原来的range元素缺失
+   * 所以需要先插入，再删除
    * @protected
    */
   protected rerender() {
-    this.range.deleteContents();
-    this[RENDER_DOM](this.range);
+    let oldRange = this.range;
+    // 创建一个新的range
+    let range = document.createRange();
+    // 把新range的范围指定到最后用来插入当前元素
+    range.setStart(oldRange.startContainer, oldRange.startOffset);
+    range.setEnd(oldRange.startContainer, oldRange.startOffset);
+    // 通过render插入当前元素
+    this[RENDER_DOM](range);
+    // 将老range挪到插入之后, 删除老元素
+    oldRange.setStart(range.endContainer, range.endOffset);
+    oldRange.deleteContents();
   }
 
   protected setState(newState: object) {
