@@ -2,7 +2,7 @@
   "name": "mini-react",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "zhanghaoyang",
+  "author": "tomokokawase",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.1",
