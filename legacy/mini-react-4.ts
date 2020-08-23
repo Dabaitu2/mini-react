@@ -1,5 +1,4 @@
 /**
- * 最终版：带vdom的 react
  * 即使是实dom元素 也不再负责直接操作dom了，统一让vdom处理
  * 因此TextWrapper 和 ElementWrapper 都要继承Component
  */
@@ -12,6 +11,7 @@ export abstract class Component {
   protected root;
 
   private range;
+  protected lastVdom;
   protected render?(): ElementWrapper | Component | any;
 
   protected constructor() {
@@ -19,6 +19,7 @@ export abstract class Component {
     this.children = [];
     this.root = null;
     this.range = null;
+    this.lastVdom = null;
   }
 
   get vdom() {
@@ -38,7 +39,12 @@ export abstract class Component {
 
   [RENDER_DOM](range) {
     this.range = range;
+    this.lastVdom = this.vdom;
     this.render!()[RENDER_DOM](range);
+  }
+
+  update() {
+
   }
 
   rerender = () => {
@@ -79,6 +85,7 @@ class ElementWrapper extends Component {
     this.type = type;
   }
 
+  // 虚拟dom树就是js对象组成的一棵树
   get vdom() {
     return this;
   }
@@ -106,6 +113,7 @@ class ElementWrapper extends Component {
       childRange.setEnd(root, root.childNodes.length);
       child[RENDER_DOM](childRange);
     }
+    // 所有insert的操作都发生在父节点透传过来的range上
     range.insertNode(root);
   }
 }

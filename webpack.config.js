@@ -1,7 +1,7 @@
 module.exports = {
   entry: {
-    main: './main.tsx',
-    tic_tac_toe: './tic-tac-toe.tsx',
+    main: './src/demo/main.tsx',
+    tic_tac_toe: './src/demo/tic-tac-toe.tsx',
   },
   module: {
     rules: [
@@ -25,7 +25,8 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+    mainFields: ['index.ts', 'index.tsx'],
   },
   mode: 'development',
   optimization: {

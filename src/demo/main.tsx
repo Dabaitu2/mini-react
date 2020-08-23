@@ -1,4 +1,4 @@
-import MiniReact from './mini-react-2';
+import MiniReact from '../MiniReact';
 
 class MyComponent extends MiniReact.Component {
   constructor() {

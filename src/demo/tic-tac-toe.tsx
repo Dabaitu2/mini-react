@@ -1,4 +1,4 @@
-import MiniReact, { Component } from './mini-react-4';
+import MiniReact, { Component } from '../MiniReact';
 
 class Square extends Component {
   render() {
