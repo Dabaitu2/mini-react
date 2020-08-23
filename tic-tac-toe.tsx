@@ -1,4 +1,4 @@
-import MiniReact, { Component } from './mini-react-3';
+import MiniReact, { Component } from './mini-react-4';
 
 class Square extends Component {
   render() {
@@ -8,8 +8,6 @@ class Square extends Component {
       </button>
     );
   }
-
-
 }
 
 class Board extends Component {
@@ -49,10 +47,12 @@ class Game extends Component {
   constructor() {
     super();
     this.state = {
-      history: [{
-        squares: Array(9).fill(null)
-      }],
-      xIsNext: true
+      history: [
+        {
+          squares: Array(9).fill(null),
+        },
+      ],
+      xIsNext: true,
     };
   }
 
@@ -65,9 +65,11 @@ class Game extends Component {
     }
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
-      history: history.concat([{
-        squares: squares
-      }]),
+      history: history.concat([
+        {
+          squares: squares,
+        },
+      ]),
       xIsNext: !this.state.xIsNext,
     });
   }
@@ -87,10 +89,7 @@ class Game extends Component {
     return (
       <div className="game">
         <div className="game-board">
-          <Board
-            squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
-          />
+          <Board squares={current.squares} onClick={i => this.handleClick(i)} />
         </div>
         <div className="game-info">
           <div>{status}</div>
@@ -103,10 +102,9 @@ class Game extends Component {
 
 // ========================================
 
-MiniReact.render(
-  <Game />,
-  document.getElementById('root')
-);
+let game = <Game/>
+MiniReact.render(game, document.getElementById('root'));
+console.log(game.vdom);
 
 function calculateWinner(squares) {
   const lines = [
