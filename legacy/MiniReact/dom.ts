@@ -4,6 +4,8 @@ import { isSameNode } from './utils';
 export const RENDER_DOM = Symbol('render to dom');
 
 export function render(component: Component, parentElement) {
+  // 这一步的range就已经框选到了实际元素，所以之后的range都不是"浮萍"
+  // 对range的修改都可以对应的dom树了
   let range = document.createRange();
   range.setStart(parentElement, 0);
   range.setEnd(parentElement, parentElement.childNodes.length);

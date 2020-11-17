@@ -30,6 +30,10 @@ class MyComponent extends MiniReact.Component {
   }
 }
 
+// ABC. DEF 两个子元素通过 createELement(MyComponenet, null, ...)
+// 被 appendChild到MyCommponent的 this.children 去了
+// 而this.children 就可以在 render 的时候用到了
+// 不一定针灸被用到
 MiniReact.render(
   <MyComponent>
     <div>abc</div>
