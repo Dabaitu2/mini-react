@@ -10,7 +10,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-typescript'],
+            presets: ['@babel/preset-typescript', '@babel/preset-env'],
             plugins: [
               [
                 '@babel/plugin-transform-react-jsx',
@@ -25,8 +25,9 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
-    mainFields: ['index.ts', 'index.tsx'],
+    extensions: ['.ts', '.tsx', '.js', '.json', '.jsx'],
+    // 从package.json 的field 字段去搜寻
+    mainFields: ['main', 'browser', 'module'],
   },
   mode: 'development',
   optimization: {

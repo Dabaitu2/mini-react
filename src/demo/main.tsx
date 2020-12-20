@@ -1,4 +1,6 @@
 import MiniReact from '../MiniReact';
+// import * as Sentry from '@sentry/browser';
+// import { Integrations } from '@sentry/tracing';
 
 class MyComponent extends MiniReact.Component {
   constructor() {
@@ -29,6 +31,19 @@ class MyComponent extends MiniReact.Component {
     );
   }
 }
+
+// Sentry.init({
+//   dsn:
+//     'https://8ae9c14557924406a5ef0f39c821468d@o488522.ingest.sentry.io/5551875',
+//   integrations: [new Integrations.BrowserTracing()],
+//
+//   tracesSampleRate: 1.0,
+// });
+
+setTimeout(() => {
+  // @ts-ignore
+  myUndefinedFunction();
+}, 4000);
 
 // ABC. DEF 两个子元素通过 createELement(MyComponenet, null, ...)
 // 被 appendChild到MyCommponent的 this.children 去了

@@ -6,8 +6,8 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-typescript": "^7.10.4",
@@ -16,5 +16,8 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@sentry/browser": "^5.29.0",
+    "@sentry/tracing": "^5.29.0"
+  }
 }
