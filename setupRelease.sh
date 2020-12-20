@@ -7,4 +7,4 @@ VERSION=$(sentry-cli releases propose-version)
 sentry-cli releases new -p project1 "$VERSION"
 
 # Associate commits with the release
-sentry-cli releases set-commits --auto "$VERSION" haha
+sentry-cli releases set-commits --auto "$VERSION" hahahehe
